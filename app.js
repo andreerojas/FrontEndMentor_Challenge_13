@@ -4,6 +4,7 @@ const screen = document.querySelector('.result-container');
 const operators = document.querySelectorAll('.btn-operator');
 const reset = document.querySelector('#reset');
 const equal = document.querySelector('#equal');
+const del = document.querySelector('#del');
 
 let firstNum = "";
 let secondNum = "";
@@ -52,6 +53,7 @@ function calculate() {
         }
         firstNum = result.toString();
         secondNum = "";
+        operator = "";
         screen.innerText = result;
     }
 }
@@ -94,4 +96,15 @@ reset.addEventListener('click', function () {
 })
 
 equal.addEventListener('click', calculate);
+
+del.addEventListener('click', function () {
+    if (operator) {
+        secondNum = "";
+    }
+    else {
+        firstNum = "0";
+    }
+    screen.innerText = `${firstNum} ${operator} ${secondNum}`;
+
+})
 applyTheme();
